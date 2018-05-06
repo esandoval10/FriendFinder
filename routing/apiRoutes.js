@@ -27,15 +27,16 @@ module.exports = function(app) {
                 var currentScore = current.scores[s];
                 var currentUser = userScores[s];
 
-                diff = Math.abs(parseInt(currentUser) - parseInt(currentScore));
+                diff += Math.abs(parseInt(currentUser) - parseInt(currentScore));
             }
 
-            if (diff <= beffos.friendDifference) {
+            if (diff <= beffos.matchScore) {
                 beffos.name = current.name;
                 beffos.photo = current.photo;
                 beffos.matchScore = diff;
             }
         }
+
         friends.push(userData);
 
         res.json(beffos);
